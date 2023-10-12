@@ -1,13 +1,17 @@
 package main.java.by.bsuir.alekseeva.Task2;
 
-public class FilledArea {
-    private FilledArea() {
+public class FullArea {
+    private final RectangleArea[] rectangleAreas;
+
+    public FullArea(RectangleArea[] rectangleAreas) {
+        this.rectangleAreas = rectangleAreas;
     }
 
-    public static boolean checkIfInside(Point point) {
-        double x = point.getX();
-        double y = point.getY();
-
-        if
+    public boolean IsPointInsideArea(double x, double y) {
+        for (RectangleArea area : rectangleAreas) {
+            if (area.isPointInsideArea(x, y))
+                return true;
+        }
+        return false;
     }
 }
