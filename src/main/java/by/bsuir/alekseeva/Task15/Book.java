@@ -1,11 +1,12 @@
-package main.java.by.bsuir.alekseeva.Task12;
+package main.java.by.bsuir.alekseeva.Task15;
 
 import java.util.Objects;
 
-public class Book {
+public class Book implements Cloneable, Comparable<Book> {
     private String title;
     private String author;
     private int price;
+    private int isbn;
     private static int edition;
 
     public Book() {
@@ -32,6 +33,9 @@ public class Book {
     public void setPrice(int price) {
         this.price = price;
     }
+    public void setIsbn(int isbn) {
+        this.isbn = isbn;
+    }
 
     public static int getEdition() {
         return edition;
@@ -47,6 +51,9 @@ public class Book {
 
     public int getPrice() {
         return price;
+    }
+    public int getIsbn() {
+        return isbn;
     }
 
     @Override
@@ -78,5 +85,22 @@ public class Book {
         return getClass().getName() + " @title='" + title + "', " +
                 "author='" + author + "', " +
                 "price=" + price;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        Book book = (Book) super.clone();
+        if (null != this.title)
+            book.title = this.title;
+        if (null != this.author)
+            book.author = this.author;
+        book.price = this.price;
+        return book;
+    }
+
+
+    @Override
+    public int compareTo(Book o) {
+        return Integer.compare(o.isbn, isbn);
     }
 }

@@ -1,8 +1,8 @@
-package main.java.by.bsuir.alekseeva.Task12;
+package main.java.by.bsuir.alekseeva.Task14;
 
 import java.util.Objects;
 
-public class Book {
+public class Book implements Cloneable {
     private String title;
     private String author;
     private int price;
@@ -78,5 +78,16 @@ public class Book {
         return getClass().getName() + " @title='" + title + "', " +
                 "author='" + author + "', " +
                 "price=" + price;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        Book book = (Book) super.clone();
+        if (null != this.title)
+            book.title = this.title;
+        if (null != this.author)
+            book.author = this.author;
+        book.price = this.price;
+        return book;
     }
 }
