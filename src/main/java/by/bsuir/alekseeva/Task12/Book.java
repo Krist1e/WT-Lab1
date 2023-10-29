@@ -75,7 +75,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return getClass().getName() + " @title='" + title + "', " +
+        return getClass().getSimpleName() + " @title='" + title + "', " +
                 "author='" + author + "', " +
                 "price=" + price;
     }

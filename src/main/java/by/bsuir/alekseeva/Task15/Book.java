@@ -88,7 +88,7 @@ public class Book implements Cloneable, Comparable<Book> {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         Book book = (Book) super.clone();
         if (null != this.title)
             book.title = this.title;
@@ -101,6 +101,6 @@ public class Book implements Cloneable, Comparable<Book> {
 
     @Override
     public int compareTo(Book o) {
-        return Integer.compare(o.isbn, isbn);
+        return Integer.compare(isbn, o.isbn);
     }
 }

@@ -81,7 +81,7 @@ public class Book implements Cloneable {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         Book book = (Book) super.clone();
         if (null != this.title)
             book.title = this.title;

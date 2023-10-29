@@ -11,21 +11,23 @@ public class MinimalRemovalsCalculator {
         }
 
         int[] dp = new int[n];
-        int maxIncreasingSeq = 1;
 
-        dp[0] = Integer.MIN_VALUE;
-        for (int i = 1; i < n; ++i)
-            dp[i] = Integer.MAX_VALUE;
+        initializeDpArray(dp, n);
+
+        int maxIncreasingSeq = 0;
 
         for (int k : array) {
             int j = binarySearch(dp, k);
-            if (dp[j - 1] < k && k < dp[j]) {
-                dp[j] = k;
-                maxIncreasingSeq = Math.max(maxIncreasingSeq, j);
-            }
+            dp[j] = k;
+            maxIncreasingSeq = Math.max(maxIncreasingSeq, j + 1);
         }
 
         return n - maxIncreasingSeq;
+    }
+
+    private static void initializeDpArray(int[] dp, int n) {
+        for (int i = 0; i < n; ++i)
+            dp[i] = Integer.MAX_VALUE;
     }
 
     private static int binarySearch(int[] dp, int element) {
